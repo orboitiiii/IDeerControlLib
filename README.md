@@ -51,29 +51,6 @@ Tracing from the source code structure (src/org/slsh/frc9427/lib), the library f
 
 For exhaustive details and exact implementations, inspect the source code directly: https://github.com/orboitiiii/IDeerControlLib/tree/master/src/org/slsh/frc9427/lib. Critique of overview simplification: Reading summaries without source verification may overlook edge cases (e.g., singular matrices); thus, clone the repo and execute unit tests (e.g., via JUnit integration) for empirical validation of criteria.
 
-## Example Usage
-
-In an FRC Robot.java context (based on actual integration patterns):
-```java
-import org.slsh.frc9427.lib.controls.util.StateSpaceUtil;
-import org.ejml.simple.SimpleMatrix;
-
-// Assume system matrices from physical model
-SimpleMatrix A = new SimpleMatrix(new double[][]{{0, 1}, {0, 0}}); // Double integrator example
-SimpleMatrix B = new SimpleMatrix(new double[][]{{0}, {1}});
-
-if (StateSpaceUtil.checkControllability(A, B)) {
-    // System controllable; proceed with LQR or feedback control
-    // Log success for traceability
-    StateSpaceUtil.LOGGER.info("System is controllable with rank {}", A.numRows());
-} else {
-    // Log failure and suggest actionable fix
-    StateSpaceUtil.LOGGER.warn("Controllability failure; consider adding actuators to B matrix.");
-}
-```
-
-Logical recommendation: Always derive from system dynamics, validate criteria before applying controllers, to avert unstable loops—e.g., integrate with WPILib's simulation for pre-deployment testing.
-
 ## Contribution
 
 Welcome contributions from the FRC community! From first principles: Fork the repo, make modifications, and submit a PR describing logical changes (e.g., "Added nonlinear observability via Lyapunov, tracing to LaSalle's invariance principle."). Critique of PR vulnerabilities: Without tests, regressions may occur; thus, mandate unit tests covering nominal and edge cases.
