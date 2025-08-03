@@ -45,6 +45,8 @@ dependencies {
 
    implementation "edu.wpi.first.ntcore:ntcore-java:${WPI_VER}"
    implementation "edu.wpi.first.wpiutil:wpiutil-java:${WPI_VER}"
+   implementation 'org.slf4j:slf4j-api:2.0.16'
+   runtimeOnly 'org.slf4j:slf4j-simple:2.0.16'
    runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86"
    runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86-64"
    runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:linuxx86-64"
