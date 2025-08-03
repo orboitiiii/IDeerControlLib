@@ -47,8 +47,6 @@ Tracing from the source code structure (src/org/slsh/frc9427/lib), the library f
   - Comments/Javadoc (based on code): Likely includes inline comments tracing to first principles, e.g., "// From linear algebra: full rank implies controllability; see Kalman (1960)."
   - Critique of code vulnerabilities: The reliance on EJML assumes numerical precision, but floating-point errors may lead to false negatives in rank checks—concrete suggestion: Add a tolerance parameter (e.g., `double epsilon = 1e-6`) in rank computation, as `matrix.rank() < n - epsilon`, and cite Golub & Van Loan (2013) for implementation, with a unit test example verifying against a known controllable system like a double integrator.
 
-- **Other Inferred Files (from directory structure, limited to actual content availability)**: The lib directory primarily houses controls/util, with potential extensions for PID controllers or trajectory generators. For instance, if additional files exist (e.g., PidUtil.java), they would integrate SLF4J logging for gain tuning, tracing to root locus or Nyquist criteria. Logical note: All components enforce mathematical determinism—no unsupported assumptions like infinite precision; users must provide valid matrices.
-
 For exhaustive details and exact implementations, inspect the source code directly: https://github.com/orboitiiii/IDeerControlLib/tree/master/src/org/slsh/frc9427/lib. Critique of overview simplification: Reading summaries without source verification may overlook edge cases (e.g., singular matrices); thus, clone the repo and execute unit tests (e.g., via JUnit integration) for empirical validation of criteria.
 
 ## Contribution
